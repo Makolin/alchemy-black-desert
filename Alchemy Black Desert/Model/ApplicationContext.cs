@@ -36,25 +36,21 @@ namespace Alchemy_Black_Desert.Model
         public int ImperialPriceOrdinary { get; set; }
         public int ImperialPriceRare { get; set; }
 
-        /*public int OneId { get; set; }
-        public Potion One { get; set; }
+        // Указываем список реагентов, на основе которого будет готовиться зелье
+        public int OneId { get; set; }
         public int OneCount { get; set; }
 
         public int TwoId { get; set; }
-        public Potion Two { get; set; }
         public int TwoCount { get; set; }
 
         public int ThreeId { get; set; }
-        public Potion Three { get; set; }
         public int ThreeCount { get; set; }
 
         public int FourId { get; set; }
-        public Potion Four { get; set; }
         public int FourCount { get; set; }
 
         public int FiveId { get; set; }
-        public Potion Five { get; set; }
-        public int FiveCount { get; set; }*/
+        public int FiveCount { get; set; }
     }
 
     // Создание контекста для базы данных
