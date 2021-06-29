@@ -24,31 +24,31 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Column="0" x:Name="MainButton">
+            <Button Grid.Column="0" x:Name="MainButton" Style="{StaticResource MenuStyleButton}">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Главная"/>
                 </StackPanel>
             </Button>
 
-            <Button Grid.Column="1" x:Name="DepartmentButton">
+            <Button Grid.Column="1" x:Name="CraftButton" Style="{StaticResource MenuStyleButton}">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Подразделения"/>
+                    <TextBlock Text="Крафты"/>
                 </StackPanel>
             </Button>
 
-            <Button Grid.Column="2" x:Name="PositionButton">
+            <Button Grid.Column="2" x:Name="OptionsButton" Style="{StaticResource MenuStyleButton}">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Должности"/>
+                    <TextBlock Text="Настройки"/>
                 </StackPanel>
             </Button>
 
-            <Button Grid.Column="3" x:Name="InfoButton">
+            <Button Grid.Column="3" x:Name="InfoButton" Style="{StaticResource MenuStyleButton}">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Справка"/>
                 </StackPanel>
             </Button>
 
-            <Button Grid.Column="4" x:Name="ExitButton">
+            <Button Grid.Column="4" x:Name="ExitButton" Click="ExitButton_Click" Style="{StaticResource MenuStyleButton}">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Выход"/>
                 </StackPanel>

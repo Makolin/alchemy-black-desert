@@ -7,7 +7,12 @@ namespace Alchemy_Black_Desert.Pages
         public MainWindow()
         {
             InitializeComponent();
-            //mainFrame.Content = new MainTable();
+            mainFrame.Content = new MainPage();
+        }
+
+        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }
