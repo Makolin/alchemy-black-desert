@@ -226,6 +226,7 @@ namespace Alchemy_Black_Desert.Pages
                     {
                         reagent.PriceOrdinary = Convert.ToInt32(TextBoxReagentOnePrice.Text);
                         db.Entry(reagent).State = EntityState.Modified;
+                        db.SaveChanges();
                     }
                 }
 
@@ -236,6 +237,7 @@ namespace Alchemy_Black_Desert.Pages
                     {
                         reagent.PriceOrdinary = Convert.ToInt32(TextBoxReagentTwoPrice.Text);
                         db.Entry(reagent).State = EntityState.Modified;
+                        db.SaveChanges();
                     }
                 }
 
@@ -246,6 +248,7 @@ namespace Alchemy_Black_Desert.Pages
                     {
                         reagent.PriceOrdinary = Convert.ToInt32(TextBoxReagentThreePrice.Text);
                         db.Entry(reagent).State = EntityState.Modified;
+                        db.SaveChanges();
                     }
                 }
 
@@ -256,6 +259,7 @@ namespace Alchemy_Black_Desert.Pages
                     {
                         reagent.PriceOrdinary = Convert.ToInt32(TextBoxReagentFourPrice.Text);
                         db.Entry(reagent).State = EntityState.Modified;
+                        db.SaveChanges();
                     }
                 }
 
@@ -266,8 +270,11 @@ namespace Alchemy_Black_Desert.Pages
                     {
                         reagent.PriceOrdinary = Convert.ToInt32(TextBoxReagentFivePrice.Text);
                         db.Entry(reagent).State = EntityState.Modified;
+                        db.SaveChanges();
                     }
                 }
+                db.Entry(insertRecipe).State = EntityState.Modified;
+                db.SaveChanges();
             }
         }
 
@@ -276,29 +283,47 @@ namespace Alchemy_Black_Desert.Pages
             using (ApplicationContext db = new ApplicationContext())
             {
                 ReagentCollection.Recipes.Remove(insertRecipe);
-
+            
                 // Основные свойства реагента
                 insertRecipe.Potion.Name = ComboBoxPotion.Text;
-
                 if (!string.IsNullOrEmpty(TextBoxPriceAuctionOrdinary.Text))
+                {
                     insertRecipe.Potion.PriceOrdinary = Convert.ToInt32(TextBoxPriceAuctionOrdinary.Text);
+                }    
                 else
+                {
                     insertRecipe.Potion.PriceOrdinary = 0;
-
+                }
+                
                 if (!string.IsNullOrEmpty(TextBoxPriceAuctionRare.Text))
+                {
                     insertRecipe.Potion.PriceRare = Convert.ToInt32(TextBoxPriceAuctionRare.Text);
+                }  
                 else
+                {
                     insertRecipe.Potion.PriceRare = 0;
+                }
+                    
 
                 if (!string.IsNullOrEmpty(TextBoxPriceImperialOrdinary.Text))
+                {
                     insertRecipe.Potion.ImperialPriceOrdinary = Convert.ToInt32(TextBoxPriceImperialOrdinary.Text);
+                }    
                 else
+                {
                     insertRecipe.Potion.ImperialPriceOrdinary = 0;
-
+                }
+                    
                 if (!string.IsNullOrEmpty(TextBoxPriceImperialRare.Text))
+                {
                     insertRecipe.Potion.ImperialPriceRare = Convert.ToInt32(TextBoxPriceImperialRare.Text);
+                }
+                    
                 else
+                {
                     insertRecipe.Potion.ImperialPriceRare = 0;
+                }
+                    
 
                 // Создаем список реагентов на основании нового списка
                 CreatyNewRegent();
@@ -414,7 +439,6 @@ namespace Alchemy_Black_Desert.Pages
         }
 
         // При смене основного реагента необходимо менять его тип
-
         private void AllComboBoxChanged(int count)
         {
             List<ComboBox> ListReagents = new List<ComboBox> { ComboBoxReagentOne, ComboBoxReagentTwo, ComboBoxReagentThree, ComboBoxReagentFour, ComboBoxReagentFive };

@@ -5,6 +5,7 @@ using System.IO;
 
 namespace Alchemy_Black_Desert.Model
 {
+    // Убрать типы крафтов
     public class TypeCraft
     {
         public int TypeCraftId { get; set; }
@@ -54,6 +55,11 @@ namespace Alchemy_Black_Desert.Model
         public int? PotionId { get; set; }
         public Reagent Potion { get; set; }
 
+        // Добавить цену изготовления, а также выгоду изготовления
+        // public int CreatePrice { get; set; }
+        // public int AuctionPrice { get; set; }
+        // public int ImperialPrice { get; set; }
+
         public int OneId { get; set; }
         //public Reagent OneReagent { get; set; }
         public int OneCount { get; set; }
@@ -80,13 +86,13 @@ namespace Alchemy_Black_Desert.Model
     {
         private string connectionString;
 
-        // Основные сумму имперской алхимии, сделать таблицу отдельную!
-        const double imperialOne = 130000;
-        const double imperialTwo = 130000;
-        const double imperialThree = 300000;
-        const double imperialFour = 400000;
-        const double imperialFive = 550000;
-        const double imperialSix = 800000;
+        // Основные сумму имперской алхимии, сделать таблицу отдельную! и у Реагента указывать количество для крафта, а выводить стоимость пака
+        const double imperialOne = 130000; // Сундук ученика
+        const double imperialTwo = 130000; // Сундук профессионалла
+        const double imperialThree = 300000; // Сундук эксперта
+        const double imperialFour = 400000; // Сундук мастера
+        const double imperialFive = 550000; // Сундук грандмастера
+        const double imperialSix = 800000; // Сундук специалиста
 
         public DbSet<TypeCraft> TypeCrafts { get; set; }
         public DbSet<Craft> Crafts { get; set; }
@@ -124,7 +130,7 @@ namespace Alchemy_Black_Desert.Model
             modelBuilder.Entity<Craft>().HasData(
                 new Craft[]
                 {
-                    new Craft { CraftId = 1, TypeId = 1, CountCraft = 500, CountOrdinary = 2780},
+                    new Craft { CraftId = 1, TypeId = 1, CountCraft = 900, CountOrdinary = 1452},
                     new Craft { CraftId = 2, TypeId = 2, CountCraft = 1800, CountOrdinary = 5044, CountRare = 448},
                 });
 

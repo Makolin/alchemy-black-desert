@@ -9,6 +9,28 @@
       Title="CraftPage">
 
     <Grid>
-        <Label Content="Крафт"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+
+        <Label Grid.Row="2" Grid.Column="0" Content="Количество крафтов"/>
+        <Label Grid.Row="3" Grid.Column="0" Content="Количество обычных"/>
+        <Label Grid.Row="4" Grid.Column="0" Content="Количество редких"/>
+
+        <TextBox Grid.Row="2" Grid.Column="1" x:Name="TextBoxCountCraft"/>
+        <TextBox Grid.Row="3" Grid.Column="1" x:Name="TextBoxCountOrdinary"/>
+        <TextBox Grid.Row="4" Grid.Column="1" x:Name="TextBoxCountRare"/>
     </Grid>
 </Page>

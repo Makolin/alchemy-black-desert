@@ -37,7 +37,7 @@
 
         <!--Стили для ячеек основной таблицы-->
         <Style TargetType="DataGridCell" x:Key="MainDataGridCell">
-            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontSize" Value="16"/>
         </Style>
 
         <Style TargetType="DataGridCell" x:Key="CenterDataGridCell" BasedOn="{StaticResource MainDataGridCell}">

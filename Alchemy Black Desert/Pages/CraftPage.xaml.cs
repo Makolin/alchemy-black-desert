@@ -15,9 +15,6 @@ using System.Windows.Shapes;
 
 namespace Alchemy_Black_Desert.Pages
 {
-    /// <summary>
-    /// Логика взаимодействия для CraftPage.xaml
-    /// </summary>
     public partial class CraftPage : Page
     {
         public CraftPage()
@@ -25,4 +22,6 @@ namespace Alchemy_Black_Desert.Pages
             InitializeComponent();
         }
     }
+
+
 }

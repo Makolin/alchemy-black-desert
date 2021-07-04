@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Alchemy_Black_Desert.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="450" d:DesignWidth="1200"
       Title="MainPage">
 
     <Grid>
@@ -20,7 +20,8 @@
 
         <DataGrid x:Name="RecipeGrid" Margin="25,0,25,0" Grid.Row="1" ItemsSource="{Binding Recipes}" Style="{StaticResource UserDataGrid}" MouseDoubleClick="RecipeGrid_MouseDoubleClick">
             <DataGrid.Columns>
-                <DataGridTextColumn Width="1.3*" Header="Наименование зелья" Binding="{Binding Path=Potion.Name}" SortDirection="Ascending" CellStyle="{StaticResource MainDataGridCell}"/>
+                <DataGridTextColumn Width="1.3*" Header="Наименование" Binding="{Binding Path=Potion.Name}" SortDirection="Ascending" CellStyle="{StaticResource MainDataGridCell}"/>
+                <DataGridTextColumn Width="1.3*" Header="Стоимость изготовления"  CellStyle="{StaticResource MainDataGridCell}"/>
                 <DataGridTextColumn Width="1.4*" Header="Аукцион" Binding="{Binding Path=RecipeId, Converter={StaticResource DisplayPriceAuction}}" CellStyle="{StaticResource CenterDataGridCell}"/>
                 <DataGridTextColumn Width="2.1*" Header="Имперская торговля" Binding="{Binding Path=RecipeId, Converter={StaticResource DisplayPriceImperial}}" CellStyle="{StaticResource CenterDataGridCell}"/>
             </DataGrid.Columns>
