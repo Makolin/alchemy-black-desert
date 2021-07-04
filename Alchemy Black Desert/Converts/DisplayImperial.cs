@@ -12,6 +12,9 @@ namespace Alchemy_Black_Desert.Converts
 
         public object Convert(object value, Type TargetType, object parametr, CultureInfo culture)
         {
+            // Перенести в отдельный файл
+            const double prize = 1.14;
+
             var expenses = 0;
             var profit = 0;
             double priceAuction = 0;
@@ -22,6 +25,11 @@ namespace Alchemy_Black_Desert.Converts
                 {
                     var currentRecipe = db.Recipes.Where(t => t.RecipeId == (int)value).FirstOrDefault();
                     var currentReagent = db.Reagents.Where(t => t.ReagentId == currentRecipe.PotionId).FirstOrDefault();
+
+                    if (currentReagent.ImperialPriceOrdinary == 0)
+                    {
+                        return string.Empty;
+                    }
 
                     if (currentRecipe.OneId != 0)
                     {
@@ -49,14 +57,14 @@ namespace Alchemy_Black_Desert.Converts
                         expenses += currentRecipe.FiveCount * Reagent.PriceOrdinary;
                     }
 
-                    // Теперь получим прибыль за крафты
+                    // Теперь получим прибыль за изготовление
                     Craft craft = null;
-                    if (currentReagent.TypeId == 2)
+                    if (currentReagent.ReagentTypeId == 2)
                     {
                         craft = db.Crafts.Where(t => t.TypeId == 1).FirstOrDefault();
                         profit = currentReagent.ImperialPriceOrdinary * craft.CountOrdinary;
                     }
-                    else if (currentReagent.TypeId == 3)
+                    else if (currentReagent.ReagentTypeId == 3)
                     {
                         craft = db.Crafts.Where(t => t.TypeId == 2).FirstOrDefault();
                         profit = currentReagent.ImperialPriceOrdinary * craft.CountOrdinary;
@@ -64,7 +72,7 @@ namespace Alchemy_Black_Desert.Converts
                     }
                     expenses *= craft.CountCraft;
                     priceAuction = (profit - expenses) / craft.CountCraft * 900;
-                    priceAuction = Math.Round(priceAuction);
+                    priceAuction = Math.Round(priceAuction) * prize;
 
                     culture = new CultureInfo("ru-RU");
                     textOut = string.Format(priceAuction.ToString("#,#", culture));

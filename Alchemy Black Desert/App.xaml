@@ -62,7 +62,7 @@
             <Setter Property="Height" Value="25"/>
             <Setter Property="FontSize" Value="15"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="Background" Value="Orange"/>
+            <Setter Property="Background" Value="LightBlue"/>
             <Setter Property="Foreground" Value="Black"/>
             <Setter Property="BorderBrush" Value="Gray"/>
         </Style>
@@ -71,7 +71,7 @@
             <Setter Property="FontSize" Value="18"/>
             <Setter Property="VerticalAlignment" Value="Stretch"/>
             <Setter Property="HorizontalAlignment" Value="Stretch"/>
-            <Setter Property="Background" Value="Orange"/>
+            <Setter Property="Background" Value="LightBlue"/>
             <Setter Property="Foreground" Value="Black"/>
             <Setter Property="BorderBrush" Value="Gray"/>
             <Setter Property="BorderThickness" Value="1 1 1 1"/>
@@ -90,6 +90,16 @@
         <Style TargetType="Button" x:Key="FindButton" BasedOn="{StaticResource MainStyleButton}">
             <Setter Property="Content" Value="Найти"/>
             <Setter Property="ToolTip" Value="Найти значение из строки поиска"/>
+        </Style>
+
+        <Style TargetType="Button" x:Key="CalculateButton" BasedOn="{StaticResource MainStyleButton}">
+            <Setter Property="Content" Value="Рассчитать"/>
+            <Setter Property="ToolTip" Value="Рассчитать количество реагентов для крафта"/>
+        </Style>
+
+        <Style TargetType="Button" x:Key="TimerButton" BasedOn="{StaticResource MainStyleButton}">
+            <Setter Property="Content" Value="Запуск"/>
+            <Setter Property="ToolTip" Value="Запуск таймера крафта с оповещением"/>
         </Style>
 
         <!--Стили для комбобоксов-->

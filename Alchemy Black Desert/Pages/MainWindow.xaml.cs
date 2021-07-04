@@ -14,5 +14,25 @@ namespace Alchemy_Black_Desert.Pages
         {
             Application.Current.Shutdown();
         }
+
+        private void CraftButton_Click(object sender, RoutedEventArgs e)
+        {
+            mainFrame.Content = new CraftPage();
+        }
+
+        private void OptionsButton_Click(object sender, RoutedEventArgs e)
+        {
+            mainFrame.Content = new OptionsPage();
+        }
+
+        private void InfoButton_Click(object sender, RoutedEventArgs e)
+        {
+            mainFrame.Content = new InfoPage();
+        }
+
+        private void MainButton_Click(object sender, RoutedEventArgs e)
+        {
+            mainFrame.Content = new MainPage();
+        }
     }
 }

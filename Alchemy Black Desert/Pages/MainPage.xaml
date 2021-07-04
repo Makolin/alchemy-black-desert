@@ -24,6 +24,13 @@
                 <DataGridTextColumn Width="1.4*" Header="Аукцион" Binding="{Binding Path=RecipeId, Converter={StaticResource DisplayPriceAuction}}" CellStyle="{StaticResource CenterDataGridCell}"/>
                 <DataGridTextColumn Width="2.1*" Header="Имперская торговля" Binding="{Binding Path=RecipeId, Converter={StaticResource DisplayPriceImperial}}" CellStyle="{StaticResource CenterDataGridCell}"/>
             </DataGrid.Columns>
+
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Новый рецепт" x:Name="NewRecipe" Click="NewRecipe_Click"/>
+                    <MenuItem Header="Удалить рецепт" x:Name="DeleteRecipe" Click="DeleteRecipe_Click"/>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
         </DataGrid>
     </Grid>
 </Page>

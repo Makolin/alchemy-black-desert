@@ -9,6 +9,6 @@
       Title="CraftPage">
 
     <Grid>
-        
+        <Label Content="Крафт"/>
     </Grid>
 </Page>

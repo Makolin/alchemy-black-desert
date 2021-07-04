@@ -51,14 +51,14 @@ namespace Alchemy_Black_Desert.Converts
                         expenses += currentRecipe.FiveCount * Reagent.PriceOrdinary;
                     }
 
-                    // Теперь получим прибыль за крафты
+                    // Теперь получим прибыль за изготовление
                     Craft craft = null;
-                    if (currentReagent.TypeId == 2)
+                    if (currentReagent.ReagentTypeId == 2)
                     {
                         craft = db.Crafts.Where(t => t.TypeId == 1).FirstOrDefault();
                         profit = currentReagent.PriceOrdinary * craft.CountOrdinary;
                     }
-                    else if (currentReagent.TypeId == 3)
+                    else if (currentReagent.ReagentTypeId == 3)
                     {
                         craft = db.Crafts.Where(t => t.TypeId == 2).FirstOrDefault();
                         profit = currentReagent.PriceOrdinary * craft.CountOrdinary;

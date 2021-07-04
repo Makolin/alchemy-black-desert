@@ -7,18 +7,20 @@
         mc:Ignorable="d"
         Title="Реагент"
         Height="500"
-        Width="1000"
+        Width="1100"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="0.7*"/>
+            <ColumnDefinition Width="1.2*"/>
+            <ColumnDefinition Width="0.6*"/>
+            <ColumnDefinition Width="0.6*"/>
+            <ColumnDefinition Width="0.4*"/>
+            <ColumnDefinition Width="0.6*"/>
+            <ColumnDefinition Width="0.4*"/>
+            <ColumnDefinition Width="0.8*"/>
             <ColumnDefinition Width="35"/>
         </Grid.ColumnDefinitions>
 
@@ -32,58 +34,83 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="1.7*"/>
         </Grid.RowDefinitions>
 
         <Label Grid.Row="0" Grid.Column="1" Content="Наименование"/>
-        <Label Grid.Row="1" Grid.Column="1" Content="Цена обычного"/>
-        <Label Grid.Row="2" Grid.Column="1" Content="Цена редкого"/>
-        <Label Grid.Row="1" Grid.Column="3" Content="Цена обычного"/>
+        <Label Grid.Row="1" Grid.Column="1" Content="Тип"/>
+        <Label Grid.Row="2" Grid.Column="1" Content="Цена обычного"/>
         <Label Grid.Row="2" Grid.Column="3" Content="Цена редкого"/>
+        <Label Grid.Row="3" Grid.Column="1" Content="Цена обычного"/>
+        <Label Grid.Row="3" Grid.Column="3" Content="Цена редкого"/>
 
-        <Label Grid.Row="4" Grid.Column="1" Content="Реагент №1"/>
-        <Label Grid.Row="5" Grid.Column="1" Content="Реагент №2"/>
-        <Label Grid.Row="6" Grid.Column="1" Content="Реагент №3"/>
-        <Label Grid.Row="7" Grid.Column="1" Content="Реагент №4"/>
-        <Label Grid.Row="8" Grid.Column="1" Content="Реагент №5"/>
+        <ComboBox Grid.Row="0" Grid.Column="2" x:Name="ComboBoxPotion" Style="{StaticResource NotReadOnlyCombobox}" SelectionChanged="ComboBoxPotion_SelectionChanged"/>
+        <ComboBox Grid.Row="1" Grid.Column="2" x:Name="ComboBoxPotionType" Style="{StaticResource ReadOnlyCombobox}"/>
+        <TextBox Grid.Row="2" Grid.Column="2" x:Name="TextBoxPriceAuctionOrdinary" />
+        <TextBox Grid.Row="2" Grid.Column="4" x:Name="TextBoxPriceAuctionRare" Grid.ColumnSpan="2"/>
+        <TextBox Grid.Row="3" Grid.Column="2" x:Name="TextBoxPriceImperialOrdinary"/>
+        <TextBox Grid.Row="3" Grid.Column="4" x:Name="TextBoxPriceImperialRare" Grid.ColumnSpan="2"/>
 
-        <Label Grid.Row="4" Grid.Column="3" Content="Количество"/>
-        <Label Grid.Row="5" Grid.Column="3" Content="Количество"/>
-        <Label Grid.Row="6" Grid.Column="3" Content="Количество"/>
-        <Label Grid.Row="7" Grid.Column="3" Content="Количество"/>
-        <Label Grid.Row="8" Grid.Column="3" Content="Количество"/>
+        <Label Grid.Row="1" Grid.Column="7" Content="Таймер крафта" Grid.ColumnSpan="2"/>
+        <TextBox Grid.Row="2" Grid.Column="7" Grid.ColumnSpan="2"/>
+        <Button Grid.Row="1" Grid.Column="7" x:Name="Timer" Click="Timer_Click" Style="{StaticResource TimerButton}" HorizontalAlignment="Right" Grid.ColumnSpan="2"/>
 
-        <Label Grid.Row="4" Grid.Column="5" Content="Цена"/>
-        <Label Grid.Row="5" Grid.Column="5" Content="Цена"/>
-        <Label Grid.Row="6" Grid.Column="5" Content="Цена"/>
-        <Label Grid.Row="7" Grid.Column="5" Content="Цена"/>
-        <Label Grid.Row="8" Grid.Column="5" Content="Цена"/>
 
-        <TextBox Grid.Row="0" Grid.Column="2" x:Name="TextBoxPotion"/>
-        <TextBox Grid.Row="1" Grid.Column="2" x:Name="TextBoxPriceAuctionOrdinary"/>
-        <TextBox Grid.Row="2" Grid.Column="2" x:Name="TextBoxPriceAuctionRare"/>
-        <TextBox Grid.Row="1" Grid.Column="4" x:Name="TextBoxPriceImperialOrdinary"/>
-        <TextBox Grid.Row="2" Grid.Column="4" x:Name="TextBoxPriceImperialRare"/>
+        <Label Grid.Row="5" Grid.Column="1" Content="Количество"/>
+        <ComboBox Grid.Row="5" Grid.Column="2" x:Name="ComboBoxCountCraft" Style="{StaticResource ReadOnlyCombobox}"/>
+        <Button Grid.Row="5" Grid.Column="3" x:Name="Calculate" Click="Calculate_Click" Style="{StaticResource CalculateButton}" />
 
-        <ComboBox Grid.Row="4" Grid.Column="2" x:Name="ComboBoxReagentOne" Style="{StaticResource NotReadOnlyCombobox}"/>
-        <ComboBox Grid.Row="5" Grid.Column="2" x:Name="ComboBoxReagentTwo" Style="{StaticResource NotReadOnlyCombobox}"/>
-        <ComboBox Grid.Row="6" Grid.Column="2" x:Name="ComboBoxReagentThree" Style="{StaticResource NotReadOnlyCombobox}"/>
-        <ComboBox Grid.Row="7" Grid.Column="2" x:Name="ComboBoxReagentFour" Style="{StaticResource NotReadOnlyCombobox}"/>
-        <ComboBox Grid.Row="8" Grid.Column="2" x:Name="ComboBoxReagentFive" Style="{StaticResource NotReadOnlyCombobox}"/>
+        <Label Grid.Row="6" Grid.Column="1" Content="Реагент №1"/>
+        <Label Grid.Row="7" Grid.Column="1" Content="Реагент №2"/>
+        <Label Grid.Row="8" Grid.Column="1" Content="Реагент №3"/>
+        <Label Grid.Row="9" Grid.Column="1" Content="Реагент №4"/>
+        <Label Grid.Row="10" Grid.Column="1" Content="Реагент №5"/>
 
-        <TextBox Grid.Row="4" Grid.Column="4" x:Name="TextBoxReagentOneCount"/>
-        <TextBox Grid.Row="5" Grid.Column="4" x:Name="TextBoxReagentTwoCount"/>
-        <TextBox Grid.Row="6" Grid.Column="4" x:Name="TextBoxReagentThreeCount"/>
-        <TextBox Grid.Row="7" Grid.Column="4" x:Name="TextBoxReagentFourCount"/>
-        <TextBox Grid.Row="8" Grid.Column="4" x:Name="TextBoxReagentFiveCount"/>
+        <Label Grid.Row="6" Grid.Column="3" Content="Количество" HorizontalAlignment="Center"/>
+        <Label Grid.Row="7" Grid.Column="3" Content="Количество" HorizontalAlignment="Center"/>
+        <Label Grid.Row="8" Grid.Column="3" Content="Количество" HorizontalAlignment="Center"/>
+        <Label Grid.Row="9" Grid.Column="3" Content="Количество" HorizontalAlignment="Center"/>
+        <Label Grid.Row="10" Grid.Column="3" Content="Количество" HorizontalAlignment="Center"/>
 
-        <TextBox Grid.Row="4" Grid.Column="6" x:Name="TextBoxReagentOnePrice"/>
-        <TextBox Grid.Row="5" Grid.Column="6" x:Name="TextBoxReagentTwoPrice"/>
-        <TextBox Grid.Row="6" Grid.Column="6" x:Name="TextBoxReagentThreePrice"/>
-        <TextBox Grid.Row="7" Grid.Column="6" x:Name="TextBoxReagentFourPrice"/>
-        <TextBox Grid.Row="8" Grid.Column="6" x:Name="TextBoxReagentFivePrice"/>
+        <Label Grid.Row="6" Grid.Column="5" Content="Цена" HorizontalAlignment="Center"/>
+        <Label Grid.Row="7" Grid.Column="5" Content="Цена" HorizontalAlignment="Center"/>
+        <Label Grid.Row="8" Grid.Column="5" Content="Цена" HorizontalAlignment="Center"/>
+        <Label Grid.Row="9" Grid.Column="5" Content="Цена" HorizontalAlignment="Center"/>
+        <Label Grid.Row="10" Grid.Column="5" Content="Цена" HorizontalAlignment="Center"/>
 
-        <Button Grid.Row="9" Grid.Column="3" x:Name="Accept" HorizontalAlignment="Right" Click="Accept_Click" Style="{StaticResource AcceptButton}"/>
-        <Button Grid.Row="9" Grid.Column="4" x:Name="Cancel" HorizontalAlignment="Right" Click="Cancel_Click" Style="{StaticResource CancelButton}"/>
+        <Label Grid.Row="6" Grid.Column="7" Content="Тип" HorizontalAlignment="Center"/>
+        <Label Grid.Row="7" Grid.Column="7" Content="Тип" HorizontalAlignment="Center"/>
+        <Label Grid.Row="8" Grid.Column="7" Content="Тип" HorizontalAlignment="Center"/>
+        <Label Grid.Row="9" Grid.Column="7" Content="Тип" HorizontalAlignment="Center"/>
+        <Label Grid.Row="10" Grid.Column="7" Content="Тип" HorizontalAlignment="Center"/>
+
+        <ComboBox Grid.Row="6" Grid.Column="2" x:Name="ComboBoxReagentOne" Style="{StaticResource NotReadOnlyCombobox}" SelectionChanged="ComboBoxReagentOne_SelectionChanged"/>
+        <ComboBox Grid.Row="7" Grid.Column="2" x:Name="ComboBoxReagentTwo" Style="{StaticResource NotReadOnlyCombobox}" SelectionChanged="ComboBoxReagentTwo_SelectionChanged"/>
+        <ComboBox Grid.Row="8" Grid.Column="2" x:Name="ComboBoxReagentThree" Style="{StaticResource NotReadOnlyCombobox}" SelectionChanged="ComboBoxReagentThree_SelectionChanged"/>
+        <ComboBox Grid.Row="9" Grid.Column="2" x:Name="ComboBoxReagentFour" Style="{StaticResource NotReadOnlyCombobox}" SelectionChanged="ComboBoxReagentFour_SelectionChanged"/>
+        <ComboBox Grid.Row="10" Grid.Column="2" x:Name="ComboBoxReagentFive" Style="{StaticResource NotReadOnlyCombobox}" SelectionChanged="ComboBoxReagentFive_SelectionChanged"/>
+
+        <TextBox Grid.Row="6" Grid.Column="4" x:Name="TextBoxReagentOneCount"/>
+        <TextBox Grid.Row="7" Grid.Column="4" x:Name="TextBoxReagentTwoCount"/>
+        <TextBox Grid.Row="8" Grid.Column="4" x:Name="TextBoxReagentThreeCount"/>
+        <TextBox Grid.Row="9" Grid.Column="4" x:Name="TextBoxReagentFourCount"/>
+        <TextBox Grid.Row="10" Grid.Column="4" x:Name="TextBoxReagentFiveCount"/>
+
+        <TextBox Grid.Row="6" Grid.Column="6" x:Name="TextBoxReagentOnePrice"/>
+        <TextBox Grid.Row="7" Grid.Column="6" x:Name="TextBoxReagentTwoPrice"/>
+        <TextBox Grid.Row="8" Grid.Column="6" x:Name="TextBoxReagentThreePrice"/>
+        <TextBox Grid.Row="9" Grid.Column="6" x:Name="TextBoxReagentFourPrice"/>
+        <TextBox Grid.Row="10" Grid.Column="6" x:Name="TextBoxReagentFivePrice"/>
+
+        <ComboBox Grid.Row="6" Grid.Column="8" x:Name="ComboBoxReagentOneType" Style="{StaticResource ReadOnlyCombobox}"/>
+        <ComboBox Grid.Row="7" Grid.Column="8" x:Name="ComboBoxReagentTwoType" Style="{StaticResource ReadOnlyCombobox}"/>
+        <ComboBox Grid.Row="8" Grid.Column="8" x:Name="ComboBoxReagentThreeType" Style="{StaticResource ReadOnlyCombobox}"/>
+        <ComboBox Grid.Row="9" Grid.Column="8" x:Name="ComboBoxReagentFourType" Style="{StaticResource ReadOnlyCombobox}"/>
+        <ComboBox Grid.Row="10" Grid.Column="8" x:Name="ComboBoxReagentFiveType" Style="{StaticResource ReadOnlyCombobox}"/>
+
+        <Button Grid.Row="11" Grid.Column="3" x:Name="Accept" HorizontalAlignment="Right" Click="Accept_Click" Style="{StaticResource AcceptButton}" Margin="0 0 230 0" Grid.ColumnSpan="6"/>
+        <Button Grid.Row="11" Grid.Column="4" x:Name="Cancel" HorizontalAlignment="Right" Click="Cancel_Click" Style="{StaticResource CancelButton}" Margin="0 0 50 0" Grid.ColumnSpan="6"/>
     </Grid>
 </Window>

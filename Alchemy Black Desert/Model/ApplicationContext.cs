@@ -5,7 +5,6 @@ using System.IO;
 
 namespace Alchemy_Black_Desert.Model
 {
-    // Таблица количества крафтов
     public class TypeCraft
     {
         public int TypeCraftId { get; set; }
@@ -29,30 +28,26 @@ namespace Alchemy_Black_Desert.Model
         public List<Reagent> Reagents { get; set; } = new List<Reagent>();
     }
 
-    // Таблица реагентов
     public class Reagent
     {
         public int ReagentId { get; set; }
-        public int? TypeId { get; set; }
-        public ReagentType Type { get; set; }
+        public int ReagentTypeId { get; set; }
+        public ReagentType ReagentType { get; set; }
         public string Name { get; set; }
         public int PriceOrdinary { get; set; }
         public int PriceRare { get; set; }
         public int ImperialPriceOrdinary { get; set; }
         public int ImperialPriceRare { get; set; }
         public List<Recipe> Recipes { get; set; } = new List<Recipe>();
+
+        /*public Reagent(string name, ReagentType reagentType, int priceOrdinary)
+        {
+            Name = name;
+            ReagentType = reagentType;
+            PriceOrdinary = priceOrdinary;
+        }*/
     }
 
-    // Сделать списки для упрощения работы с рецептами
-    /*public class RecipeReagent
-    {
-        public int RecipeReagentId { get; set; }
-        public Reagent RecipeReagentName { get; set; }
-        public int RecipeCount { get; set; }
-
-    }*/
-
-    // Рецепт изготовления любого из реагентов
     public class Recipe
     {
         public int RecipeId { get; set; }
@@ -84,18 +79,18 @@ namespace Alchemy_Black_Desert.Model
     class ApplicationContext : DbContext
     {
         private string connectionString;
-        // Добавить в переменные в отдельный файл
-        const double prize = 1.14;
 
-        // Основные сумму имперской алхимии
-        const double imperialOne = 130000 * prize;
-        const double imperialTwo = 300000 * prize;
-        const double imperialThree = 400000 * prize;
-        const double imperialFour = 550000 * prize;
-        const double imperialFive = 800000 * prize;
+        // Основные сумму имперской алхимии, сделать таблицу отдельную!
+        const double imperialOne = 130000;
+        const double imperialTwo = 130000;
+        const double imperialThree = 300000;
+        const double imperialFour = 400000;
+        const double imperialFive = 550000;
+        const double imperialSix = 800000;
 
         public DbSet<TypeCraft> TypeCrafts { get; set; }
         public DbSet<Craft> Crafts { get; set; }
+        public DbSet<ReagentType> ReagentTypes { get; set; }
         public DbSet<Reagent> Reagents { get; set; }
         public DbSet<Recipe> Recipes { get; set; }
 
@@ -126,37 +121,65 @@ namespace Alchemy_Black_Desert.Model
                     new TypeCraft { TypeCraftId = 2, TypeCraftName = "Potion" }
                 });
 
-            // Будет пока что всего два вида крафта на алхимическом столе
             modelBuilder.Entity<Craft>().HasData(
                 new Craft[]
                 {
-                    new Craft { CraftId = 1, TypeId = 1, CountCraft = 500, CountOrdinary = 500},
+                    new Craft { CraftId = 1, TypeId = 1, CountCraft = 500, CountOrdinary = 2780},
                     new Craft { CraftId = 2, TypeId = 2, CountCraft = 1800, CountOrdinary = 5044, CountRare = 448},
                 });
 
-            // Будет пока что всего два вида реагентов, собираемый и изготавливаемый
             modelBuilder.Entity<ReagentType>().HasData(
                  new ReagentType[]
                  {
-                    new ReagentType { ReagentTypeId = 1, Name = "Reagent"},
-                    new ReagentType { ReagentTypeId = 2, Name = "CraftReagent"},
-                    new ReagentType { ReagentTypeId = 3, Name = "Potion"}
+                    new ReagentType { ReagentTypeId = 1, Name = "Реагент 1 уровня"},
+                    new ReagentType { ReagentTypeId = 2, Name = "Реагент 2 уровня"},
+                    new ReagentType { ReagentTypeId = 3, Name = "Реагент 3 уровня"}
                 });
 
-            // Временный список для первого крафтового реагента
             modelBuilder.Entity<Reagent>().HasData(
                 new Reagent[]
                 {
-                    new Reagent { ReagentId = 1, TypeId = 1, Name = "Азалия", PriceOrdinary = 390},
-                    new Reagent { ReagentId = 2, TypeId = 1, Name = "Сорняк", PriceOrdinary = 390},
-                    new Reagent { ReagentId = 3, TypeId = 1, Name = "Очищенная вода", PriceOrdinary = 390},
-                    new Reagent { ReagentId = 4, TypeId = 1, Name = "Сахар", PriceOrdinary = 100},
-                    new Reagent { ReagentId = 5, TypeId = 2, Name = "Порошковый реагент", PriceOrdinary = 100 },
-                    new Reagent { ReagentId = 6, TypeId = 2, Name = "Кровь тирана", PriceOrdinary = 31000 },
-                    new Reagent { ReagentId = 7, TypeId = 1, Name = "Пыль тьмы", PriceOrdinary = 2340 },
-                    new Reagent { ReagentId = 8, TypeId = 1, Name = "Сок клена", PriceOrdinary = 4110 },
-                    new Reagent { ReagentId = 9, TypeId = 1, Name = "Лотос", PriceOrdinary = 424 },
-                    new Reagent { ReagentId = 10, TypeId = 3, Name = "Зелье заклинаний", PriceOrdinary = 25000, PriceRare = 76000, ImperialPriceOrdinary = (int)(imperialThree/15), ImperialPriceRare = (int)(imperialThree/5)},
+                    new Reagent { ReagentId = 1, ReagentTypeId = 1, Name = "Азалия", PriceOrdinary = 251},
+                    new Reagent { ReagentId = 2, ReagentTypeId = 1, Name = "Сорняк", PriceOrdinary = 1000},
+                    new Reagent { ReagentId = 3, ReagentTypeId = 1, Name = "Очищенная вода", PriceOrdinary = 4300},
+                    new Reagent { ReagentId = 4, ReagentTypeId = 1, Name = "Сахар", PriceOrdinary = 100},
+                    new Reagent { ReagentId = 5, ReagentTypeId = 2, Name = "Порошковый реагент", PriceOrdinary = 1380 },
+
+                    new Reagent { ReagentId = 6, ReagentTypeId = 2, Name = "Кровь тирана", PriceOrdinary = 31000 },
+                    new Reagent { ReagentId = 7, ReagentTypeId = 1, Name = "Пыль тьмы", PriceOrdinary = 2340 },
+                    new Reagent { ReagentId = 8, ReagentTypeId = 1, Name = "Сок клена", PriceOrdinary = 4110 },
+                    new Reagent { ReagentId = 9, ReagentTypeId = 1, Name = "Лотос", PriceOrdinary = 525 },
+                    new Reagent { ReagentId = 10, ReagentTypeId = 3, Name = "Зелье заклинаний", PriceOrdinary = 25000, PriceRare = 76000, ImperialPriceOrdinary = (int)(imperialFour/15), ImperialPriceRare = (int)(imperialFour/5)},
+
+                    new Reagent { ReagentId = 11, ReagentTypeId = 1, Name = "Кровь огра", PriceOrdinary = 13000 },
+                    new Reagent { ReagentId = 12, ReagentTypeId = 1, Name = "Кровь тролля", PriceOrdinary = 12300 },
+                    new Reagent { ReagentId = 13, ReagentTypeId = 1, Name = "Ветвь монаха", PriceOrdinary = 5400 },
+                    new Reagent { ReagentId = 14, ReagentTypeId = 1, Name = "Порошок варваров", PriceOrdinary = 29200 },
+
+                    new Reagent { ReagentId = 15, ReagentTypeId = 2, Name = "Кровь грешника", PriceOrdinary = 12600 },
+                    new Reagent { ReagentId = 16, ReagentTypeId = 1, Name = "Порошок черного камня", PriceOrdinary = 2550 },
+                    new Reagent { ReagentId = 17, ReagentTypeId = 1, Name = "Сок кипариса", PriceOrdinary = 2430 },
+                    new Reagent { ReagentId = 18, ReagentTypeId = 1, Name = "Боровик", PriceOrdinary = 775 },
+                    new Reagent { ReagentId = 20, ReagentTypeId = 3, Name = "Зелье охоты на Айн", PriceOrdinary = 15000, PriceRare = 75500, ImperialPriceOrdinary = (int)(imperialTwo/18), ImperialPriceRare = (int)(imperialTwo/6)},
+
+                    new Reagent { ReagentId = 21, ReagentTypeId = 1, Name = "Синяк", PriceOrdinary = 2380 },
+                    new Reagent { ReagentId = 22, ReagentTypeId = 1, Name = "Небесно-голубой цветок", PriceOrdinary = 4110 },
+                    new Reagent { ReagentId = 23, ReagentTypeId = 1, Name = "Пыль веков", PriceOrdinary = 2040 },
+                    new Reagent { ReagentId = 24, ReagentTypeId = 1, Name = "Сок мшистого дерева", PriceOrdinary = 2425 },
+                    new Reagent { ReagentId = 25, ReagentTypeId = 3, Name = "Зелье духа Винни", PriceOrdinary = 20100, PriceRare = 98000, ImperialPriceOrdinary = (int)(imperialThree/15), ImperialPriceRare = (int)(imperialThree/5)},
+
+                    new Reagent { ReagentId = 26, ReagentTypeId = 1, Name = "Сок ясеня", PriceOrdinary = 5750 },
+                    new Reagent { ReagentId = 27, ReagentTypeId = 1, Name = "Головач", PriceOrdinary = 406 },
+                    new Reagent { ReagentId = 28, ReagentTypeId = 3, Name = "Зелье ярости", PriceOrdinary = 29900, PriceRare = 87000, ImperialPriceOrdinary = (int)(imperialThree/15), ImperialPriceRare = (int)(imperialThree/5)},
+
+                    new Reagent { ReagentId = 29, ReagentTypeId = 1, Name = "Сок ольхи", PriceOrdinary = 1000 },
+                    new Reagent { ReagentId = 30, ReagentTypeId = 3, Name = "Зелье энергии", PriceOrdinary = 15400, PriceRare = 49000, ImperialPriceOrdinary = (int)(imperialFour/24), ImperialPriceRare = (int)(imperialFour/8)},
+
+                    new Reagent { ReagentId = 31, ReagentTypeId = 1, Name = "Кровь волка", PriceOrdinary = 7950 },
+                    new Reagent { ReagentId = 32, ReagentTypeId = 1, Name = "Волшебный листок", PriceOrdinary = 3710 },
+                    new Reagent { ReagentId = 33, ReagentTypeId = 1, Name = "Пыль тьмы", PriceOrdinary = 2680 },
+                    new Reagent { ReagentId = 34, ReagentTypeId = 2, Name = "Жидкий реагент", PriceOrdinary = 1390 },
+                    new Reagent { ReagentId = 35, ReagentTypeId = 2, Name = "Кровь шута", PriceOrdinary = 14100 },
                 });
 
             // Первый рецепт для тестирования
@@ -164,7 +187,13 @@ namespace Alchemy_Black_Desert.Model
                 new Recipe[]
                 {
                     new Recipe { RecipeId = 1, PotionId = 5, OneId = 1, OneCount = 1, TwoId = 2, TwoCount = 1, ThreeId = 3, ThreeCount = 1, FourId = 4, FourCount = 1},
-                    new Recipe { RecipeId = 2, PotionId = 10, OneId = 6, OneCount = 1, TwoId = 7, TwoCount = 2, ThreeId = 8, ThreeCount = 3, FourId = 9, FourCount = 5}
+                    new Recipe { RecipeId = 2, PotionId = 10, OneId = 6, OneCount = 1, TwoId = 7, TwoCount = 2, ThreeId = 8, ThreeCount = 3, FourId = 9, FourCount = 5},
+                    new Recipe { RecipeId = 3, PotionId = 6, OneId = 5, OneCount = 1, TwoId = 11, TwoCount = 2, ThreeId = 13, ThreeCount = 1, FourId = 14, FourCount = 1},
+                    new Recipe { RecipeId = 4, PotionId = 20, OneId = 15, OneCount = 1, TwoId = 16, TwoCount = 3, ThreeId = 17, ThreeCount = 4, FourId = 18, FourCount = 4},
+                    new Recipe { RecipeId = 5, PotionId = 25, OneId = 21, OneCount = 2, TwoId = 22, TwoCount = 1, ThreeId = 24, ThreeCount = 4, FourId = 23, FourCount = 3, FiveId = 13, FiveCount = 5},
+                    new Recipe { RecipeId = 6, PotionId = 28, OneId = 11, OneCount = 4, TwoId = 3, TwoCount = 3, ThreeId = 26, ThreeCount = 1, FourId = 27, FourCount = 4},
+                    new Recipe { RecipeId = 7, PotionId = 30, OneId = 5, OneCount = 1, TwoId = 11, TwoCount = 4, ThreeId = 29, ThreeCount = 5, FourId = 27, FourCount = 2},
+                    new Recipe { RecipeId = 8, PotionId = 35, OneId = 34, OneCount = 1, TwoId = 31, TwoCount = 2, ThreeId = 32, ThreeCount = 1, FourId = 33, FourCount = 1},
                 });
         }
     }

@@ -24,25 +24,25 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Column="0" x:Name="MainButton" Style="{StaticResource MenuStyleButton}">
+            <Button Grid.Column="0" x:Name="MainButton" Style="{StaticResource MenuStyleButton}" Click="MainButton_Click">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Главная"/>
                 </StackPanel>
             </Button>
 
-            <Button Grid.Column="1" x:Name="CraftButton" Style="{StaticResource MenuStyleButton}">
+            <Button Grid.Column="1" x:Name="CraftButton" Style="{StaticResource MenuStyleButton}" Click="CraftButton_Click">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Крафты"/>
                 </StackPanel>
             </Button>
 
-            <Button Grid.Column="2" x:Name="OptionsButton" Style="{StaticResource MenuStyleButton}">
+            <Button Grid.Column="2" x:Name="OptionsButton" Style="{StaticResource MenuStyleButton}" Click="OptionsButton_Click">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Настройки"/>
                 </StackPanel>
             </Button>
 
-            <Button Grid.Column="3" x:Name="InfoButton" Style="{StaticResource MenuStyleButton}">
+            <Button Grid.Column="3" x:Name="InfoButton" Style="{StaticResource MenuStyleButton}" Click="InfoButton_Click">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Справка"/>
                 </StackPanel>
