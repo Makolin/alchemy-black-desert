@@ -9,6 +9,5 @@
       Title="InfoPage">
 
     <Grid>
-        <Label Content="Информация"/>
     </Grid>
 </Page>
