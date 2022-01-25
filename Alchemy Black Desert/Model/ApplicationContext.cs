@@ -117,7 +117,7 @@ namespace Alchemy_Black_Desert.Model
             modelBuilder.Entity<Option>().HasData(
                 new Option[]
                 {
-                    new Option { OptionId = 1, Name = "Коммиссия аукциона", Value = 0.848M},
+                    new Option { OptionId = 1, Name = "Комиссия аукциона", Value = 0.848M},
                     new Option { OptionId = 2, Name = "Сверхприбыль имперской торговли", Value = 1.141M},
                 });
 

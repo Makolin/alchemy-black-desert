@@ -124,6 +124,7 @@ namespace Alchemy_Black_Desert.Pages
             }
         }
 
+        // Создание нового реагента
         private void CreateNewReagent()
         {
             using (ApplicationContext db = new ApplicationContext())
@@ -172,6 +173,7 @@ namespace Alchemy_Black_Desert.Pages
             }
         }
 
+        // Создание нового рецепта
         private void CreatyNewRecipe()
         {
             List<ComboBox> ListReagents = new List<ComboBox> { ComboBoxReagentOne, ComboBoxReagentTwo, ComboBoxReagentThree, ComboBoxReagentFour, ComboBoxReagentFive };

@@ -22,10 +22,10 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Width="1.3*" Header="Наименование" Binding="{Binding Path=Potion.Name}" SortDirection="Ascending" CellStyle="{StaticResource MainDataGridCell}"/>
                 <DataGridTextColumn Width="1*" Header="Изготовление"  Binding="{Binding Path=CreatePrice, Converter={StaticResource DisplayPriceCost}}" CellStyle="{StaticResource CenterDataGridCell}"/>
-                <DataGridTextColumn Width="1.4*" Header="Аукцион (обычное)" Binding="{Binding Path=AuctionProfitOrdinary, Converter={StaticResource DisplayPriceAuction}}" CellStyle="{StaticResource CenterDataGridCell}"/>
-                <DataGridTextColumn Width="1.4*" Header="Аукцион (редкое)" Binding="{Binding Path=AuctionProfitRare, Converter={StaticResource DisplayPriceAuction}}" CellStyle="{StaticResource CenterDataGridCell}"/>
-                <DataGridTextColumn Width="1.9*" Header="Имперская торговля (обычное)" Binding="{Binding Path=ImperialProfitOrdinary, Converter={StaticResource DisplayPriceImperial}}" CellStyle="{StaticResource CenterDataGridCell}"/>
-                <DataGridTextColumn Width="1.9*" Header="Имперская торговля (редкое)" Binding="{Binding Path=ImperialProfitRare, Converter={StaticResource DisplayPriceImperial}}" CellStyle="{StaticResource CenterDataGridCell}"/>
+                <DataGridTextColumn Width="1.4*" Header="Аукцион (обычное)" Binding="{Binding Path=AuctionProfitOrdinary, Converter={StaticResource DisplayPriceCost}}" CellStyle="{StaticResource CenterDataGridCell}"/>
+                <DataGridTextColumn Width="1.4*" Header="Аукцион (редкое)" Binding="{Binding Path=AuctionProfitRare, Converter={StaticResource DisplayPriceCost}}" CellStyle="{StaticResource CenterDataGridCell}"/>
+                <DataGridTextColumn Width="1.9*" Header="Имперская торговля (обычное)" Binding="{Binding Path=ImperialProfitOrdinary, Converter={StaticResource DisplayPriceCost}}" CellStyle="{StaticResource CenterDataGridCell}"/>
+                <DataGridTextColumn Width="1.9*" Header="Имперская торговля (редкое)" Binding="{Binding Path=ImperialProfitRare, Converter={StaticResource DisplayPriceCost}}" CellStyle="{StaticResource CenterDataGridCell}"/>
             </DataGrid.Columns>
 
             <DataGrid.ContextMenu>

@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Alchemy_Black_Desert.Calculations
 {
+    // Обновляем все цены, в будущем обновлять только по ссылке
     public class CalculatePrice
     {
-        // Обновляем все цены, в будущем обновлять только по ссылке
         public static void CalculateAllPrice()
         {
             using (ApplicationContext db = new ApplicationContext())

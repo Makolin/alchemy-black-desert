@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
 
 namespace Alchemy_Black_Desert.Converts
 {
+    // Вывод стоимость в определенном формате
     public class DisplayCost : IValueConverter
     {
         public object Convert(object value, Type TargetType, object parametr, CultureInfo culture)

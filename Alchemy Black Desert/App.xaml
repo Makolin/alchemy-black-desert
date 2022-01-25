@@ -4,8 +4,6 @@
              xmlns:convert="clr-namespace:Alchemy_Black_Desert.Converts">
     <Application.Resources>
         <!--Стили для конвертеров-->
-        <convert:DisplayAuction x:Key="DisplayPriceAuction"/>
-        <convert:DisplayImperial x:Key="DisplayPriceImperial"/>
         <convert:DisplayCost x:Key="DisplayPriceCost"/>
 
         <!--Стили для вывода информации в DataGrid-->

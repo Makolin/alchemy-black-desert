@@ -113,7 +113,6 @@
         <ComboBox Grid.Row="9" Grid.Column="8" x:Name="ComboBoxReagentThreeType" Style="{StaticResource ReadOnlyCombobox}"/>
         <ComboBox Grid.Row="10" Grid.Column="8" x:Name="ComboBoxReagentFourType" Style="{StaticResource ReadOnlyCombobox}"/>
         <ComboBox Grid.Row="11" Grid.Column="8" x:Name="ComboBoxReagentFiveType" Style="{StaticResource ReadOnlyCombobox}"/>
-        <Rectangle Stroke="Black" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="8" Grid.RowSpan="6" StrokeThickness="1"/>
 
         <Button Grid.Row="12" Grid.Column="3" x:Name="Accept" HorizontalAlignment="Right" Click="Accept_Click" Style="{StaticResource AcceptButton}" Margin="0 0 230 0" Grid.ColumnSpan="6"/>
         <Button Grid.Row="12" Grid.Column="4" x:Name="Cancel" HorizontalAlignment="Right" Click="Cancel_Click" Style="{StaticResource CancelButton}" Margin="0 0 50 0" Grid.ColumnSpan="6"/>
